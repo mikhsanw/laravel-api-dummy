@@ -16,5 +16,5 @@ Laravel Api Dummy
 5. Run `php artisan key:generate`
 6. Create a database and configure it in `.env`
 7. Run `php artisan migrate`
-8. Run `php artisan serve`
+8. Run `php artisan serve` atau `php artisan serve --host=0.0.0.0 --port=8000`
 9. Visit `http://localhost:8000` in your browser
