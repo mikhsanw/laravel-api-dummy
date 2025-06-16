@@ -26,18 +26,21 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $imagePath = $request->file('image')->storeAs(
-            'posts',
-            time() . '_' . $request->file('image')->getClientOriginalName(),
-            'public'
-        );
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->storeAs(
+                'posts',
+                time() . '_' . $request->file('image')->getClientOriginalName(),
+                'public'
+            );
+        }
+
         $post = Post::create([
             'title' => $request->title,
             'content' => $request->content,
-            'image' => $imagePath,
+            'image' => $imagePath ?? null,
         ]);
 
         return response()->json([
@@ -61,7 +64,7 @@ class PostController extends Controller
         $request->validate([
             'title' => 'sometimes|required|string|max:255',
             'content' => 'sometimes|required|string',
-            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         if ($request->hasFile('image')) {

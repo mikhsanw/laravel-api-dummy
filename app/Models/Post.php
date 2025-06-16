@@ -20,7 +20,7 @@ class Post extends Model
     protected function image(): Attribute
     {
         return Attribute::make(
-            get: fn ($image) => url('/storage/' . $image),
+            get: fn ($image) => $image ? url('/storage/' . $image) : '',
         );
     }
 }
