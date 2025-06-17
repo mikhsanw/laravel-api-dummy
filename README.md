@@ -12,9 +12,8 @@ Laravel Api Dummy
 1. Clone the repository `git clone https://github.com/mikhsanw/laravel-api-dummy.git`
 2. Run `cd laravel-api-dummy`
 3. Run `composer install`
-4. Run `copy .env.example` to `.env`
+4. Run `copy .env.example .env`
 5. Run `php artisan key:generate`
-6. Create a database and configure it in `.env`
 7. Run `php artisan migrate`
-8. Run `php artisan serve` atau `php artisan serve --host=0.0.0.0 --port=8000`
+8. Run `php artisan serve --host=0.0.0.0 --port=8000`
 9. Visit `http://localhost:8000` in your browser
